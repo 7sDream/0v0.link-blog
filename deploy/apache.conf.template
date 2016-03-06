@@ -7,12 +7,12 @@
 	# value is not decisive as it is used as a last resort host regardless.
 	# However, you must set it for any further virtual host explicitly.
 	
-	ServerName %domain%
+	ServerName 0v0.link
 
 	ServerAdmin didislover@gmail.com
 	
-	WSGIDaemonProcess %domain% home=%BASE_DIR% python-path=%PY_LIB%
-	WSGIProcessGroup %domain%
+	WSGIDaemonProcess 0v0.link home=%BASE_DIR% python-path=%PY_LIB%
+	WSGIProcessGroup 0v0.link
 	
 	WSGIScriptAlias / %BASE_DIR%/zvz/wsgi.py
 	

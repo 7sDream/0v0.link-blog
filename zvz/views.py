@@ -1,6 +1,7 @@
 from django.template import RequestContext
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 
 
 def handler404(req_context: RequestContext):
@@ -9,6 +10,7 @@ def handler404(req_context: RequestContext):
     }, status=404)
 
 
+@csrf_exempt
 def githook(req: HttpRequest):
     with open('/tmp/githook.txt', 'a') as f:
         f.write(str(req.POST))

@@ -41,7 +41,7 @@ if [ "${IS_FIRST_DEPLOY}" = true ]; then
     sudo mv -f "0v0.link.conf" "/etc/apache2/sites-available/0v0.link.conf"
     sudo a2ensite 0v0.link
     sudo service apache2 reload
-    sudo chown www-data:www-data .
+    sudo chown -R www-data:www-data .
     sudo chown www-data:www-data db.sqlite3
 fi
 

@@ -1,5 +1,5 @@
 from django.template import RequestContext
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse, Http404
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
@@ -14,9 +14,15 @@ def handler404(req_context: RequestContext):
 
 @csrf_exempt
 def githook(req: HttpRequest):
+    assert isinstance(req.META, dict)
+    ua = req.META.get('HTTP_USER_AGENT', '')
+    sha1 = req.META.get('HTTP_X_Hub_Signature', '')
+
+    if not ua.startswith('GitHub-Hookshot/'):
+        raise Http404()
+
     try:
-        with open('/tmp/githook.txt', 'a') as f:
-            f.write(str(json.loads(req.read().decode('utf-8'))))
-        return HttpResponse()
+        payload = json.loads(req.read(), encoding='utf-8')
+        return HttpResponse(json.dumps(payload))
     except Exception as e:
         return HttpResponse(str(e))

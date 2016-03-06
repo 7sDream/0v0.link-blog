@@ -16,7 +16,7 @@ def handler404(req_context: RequestContext):
 def githook(req: HttpRequest):
     try:
         with open('/tmp/githook.txt', 'a') as f:
-            f.write(str(json.loads(req.read())))
+            f.write(str(json.loads(req.read().decode('utf-8'))))
         return HttpResponse()
     except Exception as e:
         return HttpResponse(str(e))

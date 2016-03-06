@@ -14,7 +14,9 @@ def handler404(req_context: RequestContext):
 
 @csrf_exempt
 def githook(req: HttpRequest):
-    with open('/tmp/githook.txt', 'a') as f:
-        f.write(str(json.loads(req.read())))
-    return HttpResponse()
-
+    try:
+        with open('/tmp/githook.txt', 'a') as f:
+            f.write(str(json.loads(req.read())))
+        return HttpResponse()
+    except Exception as e:
+        return HttpResponse(str(e))

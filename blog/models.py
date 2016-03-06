@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.forms.widgets import PasswordInput
 
 TAG_MAX_LENGTH = 20
 CATEGORY_MAX_LENGTH = 40
@@ -74,3 +75,7 @@ class Comment(models.Model):
 
     def __str__(self):
         return '{self.nickname}: {self.content}'.format(self=self)
+
+
+class GithubHookSecret(models.Model):
+    secret = models.CharField(max_length=255)

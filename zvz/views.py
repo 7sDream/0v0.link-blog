@@ -1,9 +1,14 @@
+import os
+import json
+import hmac
+import hashlib
+
 from django.template import RequestContext
 from django.http import HttpRequest, HttpResponse, Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 
-import json
+from blog.models import GithubHookSecret
 
 
 def handler404(req_context: RequestContext):
@@ -14,15 +19,33 @@ def handler404(req_context: RequestContext):
 
 @csrf_exempt
 def githook(req: HttpRequest):
-    assert isinstance(req.META, dict)
-    ua = req.META.get('HTTP_USER_AGENT', '')
-    sha1 = req.META.get('HTTP_X_Hub_Signature', '')
 
-    if not ua.startswith('GitHub-Hookshot/'):
+    # check User-agent
+    if not req.META.get('HTTP_USER_AGENT', '').startswith('GitHub-Hookshot'):
+        raise Http404()
+
+    # check event
+    if not req.META.get('HTTP_X_GITHUB_EVENT', '') == 'push':
         raise Http404()
 
     try:
-        payload = json.loads(req.read(), encoding='utf-8')
-        return HttpResponse(json.dumps(payload))
-    except Exception as e:
-        return HttpResponse(str(e))
+        # check sha1 signature
+        name, req_sha1 = req.META.get('HTTP_X_Hub_Signature', '').split('=')
+        if name != 'sha1':
+            raise Http404()
+        HOOK_SECRET_KEY = get_object_or_404(GithubHookSecret, pk=1)
+        data = req.read()
+        mac = hmac.new(HOOK_SECRET_KEY.secret.encode(), data, digestmod=hashlib.sha1)
+        if not hmac.compare_digest(mac.hexdigest(), req_sha1):
+            raise Http404()
+
+        # get payload
+        payload = json.loads(data.decode('utf-8'), encoding='utf-8')
+
+        # check branch
+        if payload['ref'].endswith('master'):
+            return HttpResponse('Update!')
+        else:
+            return HttpResponse('Ignore')
+    except Exception:
+        raise Http404()

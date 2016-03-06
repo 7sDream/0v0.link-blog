@@ -20,10 +20,11 @@ fi
 # update repo
 git pull
 
+# update database
+python3 manage.py migrate
+
 # Is first deploy, configure apache
 if [ "${IS_FIRST_DEPLOY}" = true ]; then
-    python3 manage.py makemigrations blog
-    python3 manage.py migrate
     rc=1
     while [ ${rc} != 0 ]; do
         python3 manage.py createsuperuser
@@ -37,6 +38,5 @@ if [ "${IS_FIRST_DEPLOY}" = true ]; then
     sudo chown www-data:www-data db.sqlite3
 fi
 
-python3 manage.py migrate
-
+# apache reload
 touch zvz/wsgi.py

@@ -47,8 +47,9 @@ def githook(req: HttpRequest):
         # check branch
         if payload['ref'].endswith('master'):
             script = os.path.join(settings.BASE_DIR, 'deploy.sh')
-            result = subprocess.run(script, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-            return HttpResponse(result.stdout)
+            proc = subprocess.Popen([script], stdout=subprocess.PIPE,
+                                    stderr=subprocess.STDOUT)
+            return HttpResponse(proc.communicate()[0])
         else:
             return HttpResponse('Not master branch, ignore')
     except Exception as e:

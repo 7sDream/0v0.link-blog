@@ -58,6 +58,7 @@ coverage.xml
 *.log
 db.sqlite3
 qrsync.conf
+static/
 
 # Sphinx documentation
 docs/_build/

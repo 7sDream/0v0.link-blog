@@ -15,8 +15,8 @@ fi
 cd "$(dirname $0)"
 
 SCRIPT=`realpath $0`
-BASE_DIR=`dirname $SCRIPT`
-PYTHON_SITE_PACKAGE=`python3 -c "import site; print(site.getsitepackages()[0])"`
+BASE_DIR=`dirname ${SCRIPT}`
+PYTHON_SITE_PACKAGE=`python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
 
 # git pull
 

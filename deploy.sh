@@ -4,7 +4,7 @@
 #   Auto deploy site to apache.
 #
 
-
+echo `whoami`
 
 cd "$(dirname $0)"
 

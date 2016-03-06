@@ -3,6 +3,8 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
+import json
+
 
 def handler404(req_context: RequestContext):
     return render(req_context, '404.html', {
@@ -13,5 +15,6 @@ def handler404(req_context: RequestContext):
 @csrf_exempt
 def githook(req: HttpRequest):
     with open('/tmp/githook.txt', 'a') as f:
-        f.write(str(req.POST))
+        f.write(str(json.load(req)))
     return HttpResponse()
+

@@ -1,0 +1,256 @@
+body, ol, ul, p{
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style-type: none;
+}
+
+
+.top-z-container {
+    z-index: 9999;
+    float: left;
+    width: 100%;
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 3px;
+    height: 42px;
+    position: relative;
+}
+
+#top-bar {
+    color: white;
+    display: block;
+    margin: 0 auto;
+    width: 980px;
+    z-index: 9999;
+    position: relative;
+}
+
+#top-bar ul,
+ul.category-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#top-bar ul li {
+    float: left;
+    display: inline-block;
+    line-height: 42px;
+}
+
+#top-bar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#top-bar .right-box a {
+    color: cornflowerblue;
+}
+
+.left-box {
+    float: left;
+    height: 42px;
+}
+
+.right-box {
+    float: right;
+    height: 42px;
+}
+
+#top-image {
+    background: url("../image/bg.png") no-repeat center;
+    width: 100%;
+    height: 200px;
+}
+
+.blur-top-image {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 42px;
+    background: url("../image/bg.png") no-repeat top;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+}
+
+#top-bar:after, #top-bar ul:after, ul.category-list:after {
+    content: "";
+    display: block;
+    visibility: hidden;
+    height: 0;
+    clear: both;
+    font-size: 0;
+}
+
+.nav-wrapper {
+    width: 980px;
+    margin: 0 auto;
+    padding: 6px 0;
+}
+
+ul.category-list {
+    position: relative;
+}
+
+ul.category-list > li {
+    float: left;
+    position: relative;
+}
+
+ul.category-list > li > a {
+    display: inline-block;
+    margin: 0 14px;
+    height: 42px;
+    line-height: 42px;
+    padding-top: 8px;
+    font-size: 14px;
+}
+
+ul.category-list > li > ul.drop-down {
+    background-color: white;
+    display: none;
+    position: absolute;
+    min-width: 120px;
+    border-radius: 0 0 4px 4px;
+}
+
+div.menu-icon-wrapper {
+    position: absolute;
+    left: 0;
+    top: 8px;
+    height: 12px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+div.menu-icon-wrapper span {
+    position: static;
+    display: inline-block;
+    top: auto;
+    left: auto;
+    vertical-align: top;
+}
+
+span.menu-icon {
+    line-height: 12px;
+    font-size: 11px;
+    min-width: 18px;
+    margin: 0;
+    padding: 0;
+    background-color: lightblue;
+    border-radius: 4px;
+    text-align: center;
+}
+
+span.home-icon {
+    color: lightblue;
+    background-color: transparent;
+    font-size: 14px;
+}
+
+ul.category-list > li > ul.drop-down li {
+    position: relative;
+}
+
+ul.category-list > li > ul.drop-down li a:before {
+    position: absolute;
+    content: ">";
+    color: white;
+    left: 10px;
+    top: 50%;
+    transform:translate(0,-50%);
+}
+
+ul.category-list > li > ul.drop-down li {
+    display: block;
+    padding: 5px 35px 5px 25px;
+}
+
+ul.category-list > li > ul.drop-down li:hover {
+    padding: 5px 35px 5px 35px;
+    background-color: lightblue;
+}
+
+ul.category-list > li > ul.drop-down li > a {
+    font-size: 12px;
+    white-space: nowrap
+}
+
+ul.category-list > li > ul.drop-down li > span {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform:translate(0,-50%);
+}
+
+ul.category-list > li > ul.drop-down li:last-child {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+#search-form {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform:translate(0,-50%);
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 2px;
+}
+
+.search-keyword {
+    width: 170px;
+    height: 32px;
+    border: 0;
+    padding: 0 10px;
+    box-shadow: none;
+    outline: 0;
+}
+
+.search-commit {
+    background: none;
+    border: none;
+    height: 32px;
+    margin: 0;
+}
+
+#main {
+    background-color: whitesmoke;
+    clear: both;
+}
+
+#foot {
+    background-color: whitesmoke;
+    padding: 15px 20px;
+    border-top: rgb(200, 200, 200) 1px solid;
+}
+
+#foot span {
+    font-size: 14px;
+    color: gray;
+}
+
+#foot span a{
+    color: gray;
+}
+
+#foot span a:hover{
+    color: lightblue;
+}
+
+div.footer {
+    width: 980px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#main {
+    padding-bottom: 20px;
+}

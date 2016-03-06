@@ -1,0 +1,31 @@
+{% load gravatar %}
+
+<div class="right-card">
+    <div class="user-icon-wrapper">
+        <a><img src="{% gravatar_url "didislover@gmail.com" 96 %}" width="96px"
+                height="96px"></a>
+        <h2><a>7sDream</a></h2>
+    </div>
+    <div class="sign">
+        <p>Forward.forward...</p>
+    </div>
+    <div class="self-info">
+        <ul>
+            {% for info in blog_conf.self_infos %}
+                <li><a href="{{ info.url }}">{{ info.name }}</a><span
+                        class="right-icon fa fa-{{ info.icon }}"></span></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% if tags %}
+        <div class="tags">
+        {% for tag in tags %}
+            <a href="{% url 'blog:tag' tag.slug %}">{{ tag.name }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="what-i-use">
+        @<a href="#">7sDream</a><br>
+        Powered by <a href="https://www.djangoproject.com/">Django</a>
+    </div>
+</div>

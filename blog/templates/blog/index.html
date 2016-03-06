@@ -1,0 +1,97 @@
+{% extends "blog/base_site.html" %}
+
+{% load staticfiles %}
+
+{% block title %}首页{% if page > 1 %} - 第 {{ page }} 页{% endif %}{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'blog/css/index.css' %}"/>
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'blog/css/self_card.css' %}"/>
+{% endblock css %}
+
+{% block body %}
+    <div class="index-body-wrapper">
+        <div class="post-list">
+            {% block before_posts %}
+            {% endblock %}
+            {% for post in posts %}
+                <div class="post">
+                    <div class="content">
+                        <div class="post-author-category">
+                            <a class="author" href="#"><span
+                                    class="fa fa-user"> {{ post.author.nickname }}</span></a>
+                            <a href="{% url 'blog:category' post.category.slug %}">{{ post.category.name }}</a>
+                        </div>
+                        <h2>
+                            <a href="{% url 'blog:post' post.slug %}#main">{{ post.title }}</a>
+                        </h2>
+                        <div class="summary">{{ post.content|truncatechars:200 }}...</div>
+                    </div>
+                    <div class="info">
+                        <span class="meta-info fa fa-calendar">
+                            {{ post.pub_date|date:"Y-m-d" }}
+                        </span>
+                        <span class="meta-info fa fa-clock-o">
+                            {{ post.pub_date|date:"H:i:s" }}
+                        </span>
+                        {% if post.isDraft %}
+                            <span class="meta-info fa fa-file-text">Draft!</span>
+                        {% endif %}
+                        <div class="right">
+                            <span class="meta-info fa fa-eye"> {{ post.view_times }}</span>
+                            <span class="meta-info fa fa-comment"> {{ post.comment_set.count }}</span>
+                            <a href="{% url 'blog:share' post.slug %}" target="_blank"><span class="meta-info fa fa-share"> {{ post.share_times }}</span></a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="post">
+                    <div class="content">
+                        <h2>这个里暂时没有文章哟~</h2>
+                        <p>怎么办呢~~少女思考中……</p>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="turn-page-wrapper">
+                <div class="turn-page">
+                    {% if page != 1 %}
+                        <a class="left" href="{% block last_page_url %}{% url 'blog:index-with-page' page=page|add:'-1' %}{% endblock %}">
+                            <span class="fa fa-angle-left"> LAST</span>
+                        </a>
+                    {% endif %}
+                    {{ page }}
+                    {% if page != max_page %}
+                        <a class="right" href="{% block next_page_url %}{% url 'blog:index-with-page' page=page|add:'1' %}{% endblock %}">
+                            NEXT<span class="fa fa-angle-right"></span>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="right-wrapper">
+            {% include 'blog/info_card.html' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="//cdn.bootcss.com/markdown.js/0.5.0/markdown.min.js"></script>
+    <script>
+        function md2html(elem) {
+            md = elem.textContent;
+            elem.textContent = '';
+            elem.insertAdjacentHTML('afterBegin', markdown.toHTML(md));
+            Array.prototype.slice.call(elem.querySelectorAll('img')).forEach(function (elem) {
+                elem.parentNode.removeChild(elem);
+            });
+        }
+
+        function all_md_to_html() {
+            Array.prototype.slice.call(document.querySelectorAll('.summary')).forEach(md2html)
+        }
+
+        window.addEventListener('load', all_md_to_html)
+    </script>
+{% endblock %}

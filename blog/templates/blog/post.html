@@ -1,0 +1,54 @@
+{% extends "blog/base_site.html" %}
+
+{% load staticfiles %}
+
+{% block meta %}
+    <meta name="author" content="{{ post.author.nickname }}">
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'blog/css/post.css' %}"/>
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'blog/css/self_card.css' %}"/>
+{% endblock %}
+
+{% block title %}文章 - {{ post.title }}{% endblock %}
+
+{% block body %}
+    <div class="post-body-wrapper">
+        <div class="post-wrapper">
+            <div class="post">
+                <h1 id="title">{{ post.title }}</h1>
+                <div id="content">{{ post.content }}</div>
+            </div>
+            <div id="post-meta">
+                <span class="meta-info fa fa-calendar">
+                    {{ post.pub_date|date:"Y-m-d" }}
+                </span>
+                <span class="meta-info fa fa-clock-o">
+                    {{ post.pub_date|date:"h:i:s" }}
+                </span>
+                {% if post.isDraft %}
+                    <span class="meta-info fa fa-file-text">Draft!</span>
+                {% endif %}
+                <div class="right">
+                    <span class="meta-info fa fa-eye"> 1</span>
+                    <span class="meta-info fa fa-comment"> {{ post.comment_set.count }}</span>
+                    <a href="{% url 'blog:share' post.slug %}" target="_blank"><span class="meta-info fa fa-share"> {{ post.share_times }}</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="right-wrapper">
+            {% include 'blog/info_card.html' %}
+            <div class="right-card" id="toc-card">
+                <h2>Toc</h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="//cdn.bootcss.com/markdown.js/0.5.0/markdown.min.js"></script>
+    <script src="{% static 'blog/js/post.js' %}"></script>
+{% endblock %}

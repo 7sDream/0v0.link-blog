@@ -1,0 +1,35 @@
+{% extends 'blog/index.html' %}
+
+{% block title %}目录 - {{ category.name }}{% endblock %}
+
+{% block before_posts %}
+    <div class="category-card">
+        <div class="category-info">
+            <h2>当前目录：{{ category.name }}</h2>
+            <p>
+                父目录：
+                {% if category.parent %}
+                    <a href="{% url 'blog:category' slug=category.parent.slug %}">{{ category.parent.name }}</a>
+                {% else %}
+                    无
+                {% endif %}
+            </p>
+            <p>
+                子目录：
+                {% for child in category.children.all %}
+                    <span><a href="{% url 'blog:category' child.slug %}">{{ child.name }}</a> </span>
+                {% empty %}
+                    无
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block last_page_url %}
+    {% url 'blog:category-with-page' slug=category.slug page=page|add:'-1' %}
+{% endblock %}
+
+{% block next_page_url %}
+    {% url 'blog:category-with-page' slug=category.slug page=page|add:'1' %}
+{% endblock %}

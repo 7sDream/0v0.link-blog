@@ -1,0 +1,155 @@
+.post-body-wrapper {
+    width: 980px;
+    margin: 0 auto;
+    padding-top: 20px;
+    background-color: whitesmoke;
+}
+
+.post-body-wrapper:after {
+    display: block;
+    content: "";
+    font-size: 0;
+    height: 0;
+    clear: both;
+}
+
+.post-wrapper {
+    float: left;
+    width: 650px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 1px;
+}
+
+.post {
+    padding: 30px 20px;
+}
+
+.post h1 {
+    font-weight: bold;
+    font-size: 24px;
+    padding-bottom: 10px;
+    border-bottom: rgb(173, 173, 173) 1px dashed;
+    margin: 0 0 10px;
+}
+
+.post h2 {
+    font-weight: bold;
+    font-size: 20px;
+    padding-bottom: 10px;
+    border-bottom: rgb(173, 173, 173) 1px dashed;
+    margin: 0 0 10px;
+}
+
+#content p {
+    font-size: 14px;
+    margin-bottom: 14px;
+    line-height: 1.7;
+}
+
+#content a {
+    color: green;
+    text-decoration: underline;
+}
+
+#content p.img-wrapper {
+    margin: 20px 0;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 10px;
+    padding: 10px;
+}
+
+#content p.img-wrapper img {
+    display: block;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#content p.img-desc {
+    color: gray;
+    font-size: 12px;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 0;
+    padding: 10px 0 0;
+}
+
+#content blockquote {
+    font-style: italic;
+    margin: 15px 0;
+    padding-left: 5%;
+    border-left: lightblue 5px solid;
+}
+
+#post-meta {
+    background-color: whitesmoke;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25) inset;
+    padding: 15px 20px;
+}
+
+#post-meta:after {
+    display: block;
+    content: '';
+    font-size: 0;
+    clear: both;
+}
+
+#post-meta .meta-info {
+    float: left;
+    font-size: 14px;
+    margin-right: 20px;
+    color: rgb(144, 147, 154);
+    display: inline-block;
+    line-height: 20px;
+    text-shadow: rgb(255, 255, 255) 0 1px 0;
+}
+
+.meta-info:hover {
+    color: rgb(112, 114, 118);
+}
+
+.left {
+    display: inline-block;
+    float: left;
+    height: 100%;
+}
+
+.right {
+    display: inline-block;
+    float: right;
+    height: 100%;
+}
+
+.right-wrapper {
+    float: left;
+    margin-left: 50px;
+    width: 280px;
+}
+
+#toc-card {
+    padding: 20px 30px;
+    margin-top: 20px;
+}
+
+#toc-card h2 {
+    color: white;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+#toc-card ul {
+    padding-left: 20px;
+}
+
+
+#toc-card li {
+    display: list-item;
+    list-style: disc;
+    color: white;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+#toc-card li a {
+    color: white;
+}

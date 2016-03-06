@@ -1,0 +1,152 @@
+.right-card {
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 3px;
+}
+
+.user-icon-wrapper {
+    padding: 28px 30px 24px;
+    background-color: rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.user-icon-wrapper img {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 15px;
+    border-radius: 100%;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.user-icon-wrapper img:hover {
+    animation: rotate 1s linear infinite;
+}
+
+.user-icon-wrapper h2 {
+    padding: 0;
+    margin: 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-shadow: rgba(0, 0, 0, 0.5) 0 1px 2px;
+}
+
+.user-icon-wrapper h2 a{
+    color: white;
+    font-size: 100%;
+}
+
+.user-icon-wrapper h2 a:hover {
+    opacity: 0.7;
+}
+
+.sign {
+    padding: 20px 30px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 3px 0 inset;
+}
+
+.sign p {
+    text-shadow: rgba(0, 0, 0, 0.5) 0 1px 2px;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 2px;
+    color: rgb(173, 173, 173);
+}
+
+.self-info {
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.self-info ul {
+    box-shadow: rgba(0, 0, 0, 0.3)  0 1px 2px 0 inset;
+    border-radius: 2px;
+}
+
+.self-info li {
+    position: relative;
+    background: rgba(0, 0, 0, 0.21);
+    height: 48px;
+    color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255 ,255,0.05);
+    border-radius: 2px 2px 0 0;
+}
+
+.self-info li:first-child {
+    border-top: none;
+}
+
+.self-info li:last-child {
+    border-bottom: none;
+}
+
+.self-info li a {
+    display: block;
+    padding: 0 32px 0 28px;
+    width: 160px;
+    line-height: 48px;
+    height: 48px;
+    font-size: 12px;
+    color: white;
+}
+
+.self-info li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.self-info li .right-icon {
+    position: absolute;
+    right: 28px;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: inline-block;
+}
+
+.what-i-use, .tags{
+    color: rgb(173, 173, 173);
+    padding: 30px 30px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-size: 12px;
+    font-family: 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, tahoma, arial, simsun, 宋体, serif;
+}
+
+.what-i-use > a, .tags > a{
+    color: rgb(173, 173, 173);
+    text-shadow: rgba(0, 0, 0, 0.5) 0 1px 2px;
+    line-height: 24px;
+}
+
+.tags > a:hover, .what-i-use > a:hover {
+    color: rgb(220, 220, 220);
+}
+
+.tags {
+    text-align: left;
+    padding: 25px 30px 20px;
+}
+
+.tags > a {
+    font-size: 12px;
+    height: 15px;
+    line-height: 15px;
+    padding: 3px 5px;
+    margin: 0 0 10px 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    box-shadow: rgb(50, 50, 50) 1px 1px 1px inset;
+    display: inline-block;
+}

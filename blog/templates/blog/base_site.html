@@ -1,0 +1,98 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    {% block meta %}
+    {% endblock %}
+    <title>{{ blog_conf.name }} - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'blog/css/base_site.css' %}"/>
+    <link href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css"
+          rel="stylesheet">
+    {% block css %}
+    {% endblock css %}
+</head>
+<body>
+<header>
+    <div class="top-z-container">
+        <div class="blur-top-image"></div>
+        <div id="top-bar">
+            <nav class="left-box">
+                <ul>
+                    <li>
+                        <a href="{% url 'blog:index' %}">{{ blog_conf.name }}</a> {{ blog_conf.description }}
+                    </li>
+                </ul>
+            </nav>
+            <nav class="right-box">
+                <ul>
+                    {% if user.is_authenticated %}
+                        <li>欢迎 <a href="#">{{ user.username }}</a></li>
+                    {% else %}
+                        <li><a href="#">登录</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div id="top-image"></div>
+    <nav class="nav-wrapper">
+        <ul class="category-list">
+            <li>
+                <a href="{% url 'blog:index' %}">
+                    <span>首页</span>
+                    <div class="menu-icon-wrapper">
+                        <span class="menu-icon home-icon fa fa-home"></span>
+                    </div>
+                </a>
+            </li>
+            {% for category in categories %}
+                <li onmouseover="show_menu(this)" onmouseout="hide_menu(this)">
+                    <a href="{% url 'blog:category' category.slug %}">
+                        <div class="menu-icon-wrapper">
+                            <span class="menu-icon">{{ category.children.count }}</span>
+                        </div>
+                        {{ category.name }}
+                    </a>
+                    {% if category.children %}
+                        <ul class="drop-down">
+                            {% for sub_category in category.children.all %}
+                                <li>
+                                    <a href="{% url 'blog:category' sub_category.slug %}">{{ sub_category.name }}</a>
+                                    <span class="menu-icon">{{ sub_category.post_set.count }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            <form id="search-form">
+                <input class="search-keyword" type="text" name="keyword"
+                       id="keyword"/>
+                <button class="search-commit" type="submit">搜索</button>
+            </form>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div id="main">
+        {% block body %}
+        {% endblock %}
+    </div>
+</main>
+<footer>
+    <div id="foot">
+        {% block foot %}
+            <div class="footer">
+                <span>Powered by: <a href="https://www.python.org" target="_blank">Python</a>, <a href="https://www.djangoproject.com/" target="_blank">Django</a>, <a href="https://www.sqlite.org/" target="_blank">SQLite</a></span><br>
+                <span>Special thanks: <a href="https://www.jetbrains.com/pycharm/" target="_blank">PyCharm</a>, <a href="https://www.google.com/chrome/" target="_blank">Chrome</a>, <a href="https://www.gravatar.com/" target="_blank">Gravatar</a></span>
+            </div>
+        {% endblock %}
+    </div>
+</footer>
+</body>
+<script src="{% static 'blog/js/base_site.js' %}"> </script>
+{% block scripts %}
+{% endblock %}
+</html>

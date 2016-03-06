@@ -1,0 +1,21 @@
+{% extends 'blog/index.html' %}
+
+{% block title %}标签 - {{ tag.name }}{% endblock %}
+
+{% block before_posts %}
+    <div class="category-card">
+        <div class="category-info">
+            <h2>标签：{{ tag.name }}</h2>
+            <p>
+                所有标签：
+                {% for child in tags %}
+                    <span><a href="{% url 'blog:tag' child.slug %}">{{ child.name }}</a> </span>
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block last_page_url %}{% url 'blog:tag-with-page' slug=tag.slug page=page|add:'-1' %}{% endblock %}
+
+{% block next_page_url %}{% url 'blog:tag-with-page' slug=tag.slug page=page|add:'1' %}{% endblock %}

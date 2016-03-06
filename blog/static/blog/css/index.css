@@ -1,0 +1,126 @@
+.index-body-wrapper {
+    width: 980px;
+    margin: 0 auto;
+    padding-top: 20px;
+    background-color: whitesmoke;
+}
+
+.index-body-wrapper:after {
+    display: block;
+    content: "";
+    font-size: 0;
+    height: 0;
+    clear: both;
+}
+
+.post-list {
+    float: left;
+    width: 650px;
+    background-color: transparent;
+}
+
+.post, .turn-page, .category-card {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 1px;
+    margin-bottom: 10px;
+}
+
+.post:hover, .turn-page:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 3px 3px 5px;
+}
+
+.post > .content, .category-card > .category-info {
+    padding: 15px 30px 12px;
+}
+
+.category-info a {
+    color: green;
+}
+
+.content > div.post-author-category {
+    text-align: left;
+    font-size: 12px;
+    padding-bottom: 10px;
+}
+
+div.post-author-category > a {
+    color: rgb(144, 147, 154);
+}
+
+div.post-author-category > a.author {
+    display: inline-block;
+    float: right;
+}
+
+.content > h2, .category-info > h2{
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 0 20px;
+    padding: 0 0 14px;
+    font-size: 19px;
+    border-bottom: 1px dotted rgb(144, 147, 154);
+}
+
+.content > h2 > a:hover {
+    color: lightblue;
+}
+
+.content > .summary > p{
+    margin-bottom: 18px;
+    font-size: 12px;
+}
+
+.post > .info {
+    padding: 15px 30px;
+    background-color: whitesmoke;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25) inset;
+    vertical-align: middle;
+    height: 20px;
+}
+
+.info .meta-info {
+    float: left;
+    font-size: 14px;
+    margin-right: 20px;
+    color: rgb(144, 147, 154);
+    display: inline-block;
+    line-height: 20px;
+    text-shadow: rgb(255, 255, 255) 0 1px 0;
+}
+
+.meta-info:hover {
+    color: rgb(112, 114, 118);
+}
+
+.info:after {
+    content: '';
+    font-size: 0;
+    clear: both;
+}
+
+.left {
+    display: inline-block;
+    float: left;
+    height: 100%;
+}
+
+.right {
+    display: inline-block;
+    float: right;
+    height: 100%;
+}
+
+.right-wrapper {
+    float: left;
+    margin-left: 50px;
+    width: 280px;
+}
+
+.turn-page {
+    padding: 10px 5px;
+    text-align: center;
+}
+
+.turn-page a {
+    color: rgb(173, 173, 173);
+}

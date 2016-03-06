@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from . import views
 
 handler404 = 'zvz.views.handler404'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^githook/', views.githook),
     url(r'', include('blog.urls', namespace='blog')),
 ]

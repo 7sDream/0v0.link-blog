@@ -34,9 +34,8 @@ else:
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '0v0.link'
+    '0v0.link',
 ]
-
 
 # Application definition
 

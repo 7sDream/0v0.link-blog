@@ -5,6 +5,7 @@
 #
 # Arguments:
 #   $1: Website domain
+#   $2: Python env dir, Optional
 
 if [ -z "$1" ]; then
     echo "No argument!"
@@ -15,8 +16,15 @@ cd "$(dirname $0)"
 
 SCRIPT=`realpath $0`
 BASE_DIR=`dirname $SCRIPT`
+PYTHON_SITE_PACKAGE=`python3 -c "import site; print(site.getsitepackages()[0])"`
 
-sed -e "s#%BASE_DIR%#${BASE_DIR}#" -e "s#%domain%#$1#" deploy/apache.conf.template > "$1.conf"
+# git pull
+
+python3 manage.py makemigrations
+
+python3 manage.py migrate
+
+sed -e "s#%BASE_DIR%#${BASE_DIR}#" -e "s#%domain%#$1#" deploy/apache.conf.template -e "s#%PY_LIB%#$PYTHON_SITE_PACKAGE#" > "$1.conf"
 
 sudo mv -f "$1.conf" "/etc/apache2/sites-available/$1.conf"
 

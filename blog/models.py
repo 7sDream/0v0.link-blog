@@ -41,7 +41,7 @@ class Post(models.Model):
     slug = models.SlugField(max_length=TITLE_MAX_LENGTH * CN_TO_EN_RADIO)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     content = models.TextField()
-    tags = models.ManyToManyField(Tag, blank=True, null=True)
+    tags = models.ManyToManyField(Tag, blank=True)
     category = models.ForeignKey(Category, null=True, blank=True, on_delete=models.SET_NULL)
     pub_date = models.DateTimeField('publish date', auto_now_add=True)
     last_mod = models.DateTimeField('last modify date', auto_now=True)

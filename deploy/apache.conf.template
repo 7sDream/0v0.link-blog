@@ -11,6 +11,9 @@
 
 	ServerAdmin didislover@gmail.com
 	
+	WSGIDaemonProcess %domain% home=%BASE_DIR% python-path=%PY_LIB%
+	WSGIProcessGroup %domain%
+	
 	WSGIScriptAlias / %BASE_DIR%/zvz/wsgi.py
 	
 	<Directory %BASE_DIR%/zvz>
@@ -34,9 +37,6 @@
 	# following line enables the CGI configuration for this host only
 	# after it has been globally disabled with "a2disconf".
 	#Include conf-available/serve-cgi-bin.conf
-	
-	WSGIDaemonProcess 127.0.0.1 python-path=%BASE_DIR%
-	WSGIProcessGroup 127.0.0.1
 </VirtualHost>
 
 # vim: syntax=apache ts=4 sw=4 sts=4 sr noet

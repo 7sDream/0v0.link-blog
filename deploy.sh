@@ -26,9 +26,15 @@ python3 manage.py migrate
 
 # Is first deploy, configure apache
 if [ "${IS_FIRST_DEPLOY}" = true ]; then
-    python3 manage.py createsuperuser
+    rc=1
+    while [ ${rc} != 0 ]; do
+        python3 manage.py createsuperuser
+        rc=$?
+    done
     sed -e "s#%BASE_DIR%#${BASE_DIR}#" -e "s#%PY_LIB%#$PYTHON_SITE_PACKAGE#" deploy/apache.conf.template > "0v0.link.conf"
     sudo mv -f "0v0.link.conf" "/etc/apache2/sites-available/0v0.link.conf"
     sudo a2ensite 0v0.link
     sudo service apache2 reload
+    sudo chown www-data:www-data .
+    sudo chown www-data:www-data db.sqlite3
 fi

@@ -62,16 +62,18 @@ Django 后台部分：
 
 **这不是个reuseable app！**，但是确实是有一些快速部署支持的，deploy.sh 和 deploy 文件夹就是干这个用的。
 
-如果你想部署在自己的服务器上的话，基本上要以下几步：
+如果你想部署在自己的服务器上的话，基本上要以下，额……好多步：
 
 - fork
 - 安装 Python3，pip3，virtualenv，
 - sudo apt-get install apache2 libapache2-mod-wsgi-py3
 - clone 你的 repo
 - 在 clone 出的目录旁建立一个 Python virtual env，名字自己定
+- 在 env 里安装 django, pytz, django-gravatar2
 - 把 depoly.sh 里 PYENV 变量里的 env-0v0.link 改成你的 env 名字
 - 把 deploy/apache.conf.template 和 zvz/setting.py 里的 0v0.link 改成你的域名
 - 把 zvz/setting.py 里的 Arbutus 改成你服务器的 hostname
+- 按照你的个人信息编辑 blog/apps.py 里的 blog_settings 变量
 - 运行 deploy.sh，然后祈祷它别出错。
 - 访问你的域名(eg. example.com)，看看是不是正常
 - 在 Github 上为 repo 添加 Webhook

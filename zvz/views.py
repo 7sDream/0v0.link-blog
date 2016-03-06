@@ -2,11 +2,13 @@ import os
 import json
 import hmac
 import hashlib
+import subprocess
 
 from django.template import RequestContext
 from django.http import HttpRequest, HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 
 from blog.models import GithubHookSecret
 
@@ -44,6 +46,8 @@ def githook(req: HttpRequest):
 
         # check branch
         if payload['ref'].endswith('master'):
+            script = os.path.join(settings.BASE_DIR, 'deploy.sh')
+            result = subprocess.run(script, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
             return HttpResponse('Update!')
         else:
             return HttpResponse('Ignore')

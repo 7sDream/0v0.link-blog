@@ -4,10 +4,17 @@
 #   Auto deploy site to apache.
 #
 
+
+
 cd "$(dirname $0)"
 
 SCRIPT=`realpath $0`
 BASE_DIR=`dirname ${SCRIPT}`
+
+PYENV = `realpath ${BASE_DIR}/../env-0v0.link/bin/activate`
+
+source "$PYENV"
+
 PYTHON_SITE_PACKAGE=`python3 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())"`
 
 if [ ! -f 'db.sqlite3' ]; then

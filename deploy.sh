@@ -11,7 +11,7 @@ cd "$(dirname $0)"
 SCRIPT=`realpath $0`
 BASE_DIR=`dirname ${SCRIPT}`
 
-PYENV = `realpath ${BASE_DIR}/../env-0v0.link/bin/activate`
+PYENV=`realpath ${BASE_DIR}/../env-0v0.link/bin/activate`
 
 source "$PYENV"
 

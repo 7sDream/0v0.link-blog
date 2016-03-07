@@ -5,17 +5,10 @@
     background-color: whitesmoke;
 }
 
-.post-body-wrapper:after {
-    display: block;
-    content: "";
-    font-size: 0;
-    height: 0;
-    clear: both;
-}
-
 .post-wrapper {
-    float: left;
-    width: 650px;
+    width: 980px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: white;
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.25) 1px 1px 1px;

@@ -37,9 +37,9 @@ Django 后台部分：
 
 ## 想到啥写啥的 TODO List
 
-- 网站 icon
-- GZip 压缩
+- ~~网站 icon~~
 - About 页面
+- GZip 压缩
 - 站内搜索
 - 评论
 - RSS

@@ -73,9 +73,9 @@ def post(req: HttpRequest, slug: str) -> HttpResponse:
     if has_permission_access_post(req.user, the_post):
         the_post.view_times = F('view_times') + 1
         the_post.save()
+        the_post.refresh_from_db()
         return render(req, 'blog/post.html', {
             'post': the_post,
-            'tags': the_post.tags.all(),
         })
 
     raise Http404()

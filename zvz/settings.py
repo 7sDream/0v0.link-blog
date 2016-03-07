@@ -26,10 +26,16 @@ SECRET_KEY = '8g&f_gk85v@yhj4ij)l()vj-jq@b6ze!c0dr!-0pz_3rrb=p28'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 if socket.gethostname() == 'Arbutus':
     DEBUG = False
+    # Static files (CSS, JavaScript, Images)
+    # https://docs.djangoproject.com/en/1.9/howto/static-files/
+    STATIC_URL = 'http://7xrf4a.com1.z0.glb.clouddn.com/'
 else:
     DEBUG = True
+    STATIC_URL = '/static/'
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -126,10 +132,3 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-
-STATIC_URL = 'http://7xrf4a.com1.z0.glb.clouddn.com/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')

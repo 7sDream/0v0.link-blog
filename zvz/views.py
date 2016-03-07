@@ -5,10 +5,12 @@ import hashlib
 import subprocess
 
 from django.template import RequestContext
-from django.http import HttpRequest, HttpResponse, Http404
-from django.shortcuts import render, get_object_or_404
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
+from django.core.urlresolvers import reverse
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 from blog.models import GithubHookSecret
 
@@ -54,3 +56,7 @@ def githook(req: HttpRequest):
             return HttpResponse('Not master branch, ignore')
     except Exception as e:
         return HttpResponse(str(e))
+
+
+def icon(req: HttpResponse):
+    return redirect(static('blog/image/favicon.ico'))

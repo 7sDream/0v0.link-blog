@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^githook/', views.githook),
     url(r'', include('blog.urls', namespace='blog')),
+
+    url(r'^favicon.ico/?$', views.icon, name='icon'),
 ]

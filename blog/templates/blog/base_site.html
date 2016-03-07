@@ -44,7 +44,7 @@
                 <a href="{% url 'blog:index' %}">
                     <span>首页</span>
                     <div class="menu-icon-wrapper">
-                        <span class="menu-icon home-icon fa fa-home"></span>
+                        <span class="menu-icon icon-no-bg-color fa fa-home"></span>
                     </div>
                 </a>
             </li>
@@ -68,6 +68,16 @@
                     {% endif %}
                 </li>
             {% endfor %}
+            {% if about %}
+                <li>
+                    <a href="{% url 'blog:post' slug='about' %}">
+                        <span>关于</span>
+                        <div class="menu-icon-wrapper">
+                            <span class="menu-icon icon-no-bg-color fa fa-info"></span>
+                        </div>
+                    </a>
+                </li>
+            {% endif %}
             <form id="search-form">
                 <input class="search-keyword" type="text" name="keyword"
                        id="keyword"/>

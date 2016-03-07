@@ -20,9 +20,16 @@
                 <div class="post">
                     <div class="content">
                         <div class="post-author-category">
-                            <a class="author" href="#"><span
-                                    class="fa fa-user"> {{ post.author.nickname }}</span></a>
-                            <a href="{% url 'blog:category' post.category.slug %}">{{ post.category.name }}</a>
+                            <a class="author" href="#">
+                                <span class="fa fa-user"> {{ post.author.nickname }}</span>
+                            </a>
+                            {% if post.category %}
+                                <a href="{% url 'blog:category' post.category.slug %}">
+                                    {{ post.category.name }}
+                                </a>
+                            {% else %}
+                                <a>未分类</a>
+                            {% endif %}
                         </div>
                         <h2>
                             <a href="{% url 'blog:post' post.slug %}#main">{{ post.title }}</a>

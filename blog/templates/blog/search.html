@@ -1,0 +1,18 @@
+{% extends 'blog/index.html' %}
+
+{% block title %}搜索 - {{ keyword }}{% endblock %}
+
+{% block before_posts %}
+    <div class="category-card">
+        <div class="category-info">
+            <h2>关键词：{{ keyword }}</h2>
+            <p>
+                搜索到结果：{{ result_amount }} 项
+            </p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block last_page_url %}{% url 'blog:search' %}?keyword={{ keyword }}&page={{ page|add:'-1' }}{% endblock %}
+
+{% block next_page_url %}{% url 'blog:search' %}?keyword={{ keyword }}&page={{ page|add:'1' }}{% endblock %}

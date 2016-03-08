@@ -76,9 +76,8 @@
                     </a>
                 </li>
             {% endif %}
-            <form id="search-form">
-                <input class="search-keyword" type="text" name="keyword"
-                       id="keyword"/>
+            <form id="search-form" method="GET" action="/search/"  onsubmit="return search_validator(this);">
+                {{ search_form }}
                 <button class="search-commit" type="submit">搜索</button>
             </form>
         </ul>

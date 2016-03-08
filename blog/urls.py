@@ -18,5 +18,7 @@ urlpatterns = [
     url(r'^tag/(?P<slug>[\w-]+)/(?P<page>\d+)/$', views.tag,
         name='tag-with-page'),
 
+    url(r'^search/$', view=views.search, name='search'),
+
     url(r'^share/(?P<slug>[\w-]+)/$', views.share, name='share')
 ]

@@ -3,6 +3,7 @@ from django.http import HttpRequest
 from .models import Category, Post
 from .apps import BlogConfig
 from .views import has_permission_access_post
+from .forms import SearchFrom
 
 
 def blog_conf(req: HttpRequest):
@@ -17,4 +18,5 @@ def blog_conf(req: HttpRequest):
         'blog_conf': BlogConfig.blog_settings,
         'categories': first_level_categories,
         'about': about,
+        'search_form': SearchFrom(auto_id='%s'),
     }

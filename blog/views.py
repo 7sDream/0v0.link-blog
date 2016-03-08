@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Post, Tag, Category
 from .apps import BlogConfig
+from .forms import SearchFrom
 
 Conf = BlogConfig.blog_settings
 
@@ -17,12 +18,15 @@ def get_item_in_page_or_404(the_list: list, page: str):
     except ValueError:
         raise Http404()
 
+    if page <= 0:
+        raise Http404()
+
     list_length = len(the_list)
 
     max_page_number = math.ceil(list_length / Conf['post_per_page'])
     max_page_number = 1 if max_page_number == 0 else max_page_number
 
-    if page == 0 or page > max_page_number:
+    if page > max_page_number:
         raise Http404()
 
     start = Conf['post_per_page'] * (page - 1)
@@ -70,7 +74,7 @@ def post(req: HttpRequest, slug: str) -> HttpResponse:
     the_post = get_object_or_404(Post, slug=slug)
     user = req.user
 
-    if has_permission_access_post(req.user, the_post):
+    if has_permission_access_post(user, the_post):
         the_post.view_times = F('view_times') + 1
         the_post.save()
         the_post.refresh_from_db()
@@ -111,6 +115,29 @@ def tag(req: HttpRequest, slug: str, page: str = '1') -> HttpResponse:
         'page': page,
         'max_page': max_page,
     })
+
+
+def search(req: HttpRequest):
+
+    if req.method == 'GET':
+        form = SearchFrom(req.GET, auto_id='%s')
+        if form.is_valid():
+            page = req.GET.get('page', '1')
+            posts = Post.objects.filter(Q(title__contains=form.cleaned_data['keyword']) |
+                                        Q(content__contains=form.cleaned_data['keyword']))
+            posts = filter_post_list_by_user(posts, req.user)
+            result_amount = len(posts)
+            posts, page, max_page = get_item_in_page_or_404(posts, page)
+
+            return render(req, 'blog/search.html', {
+                'posts': posts,
+                'keyword': form.cleaned_data['keyword'],
+                'page': page,
+                'max_page': max_page,
+                'result_amount': result_amount,
+            })
+        else:
+            return HttpResponse('参数填的不对不能搜哒！')
 
 
 def share(req: HttpRequest, slug: str):

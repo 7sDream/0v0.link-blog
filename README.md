@@ -28,6 +28,7 @@ Django 后台部分：
 - 文章修改记录
 - 任意级评论
 - 多作者支持
+- GZip
 
 其他部分：
 
@@ -38,10 +39,11 @@ Django 后台部分：
 ## 想到啥写啥的 TODO List
 
 - ~~网站 icon~~
-- About 页面
-- GZip 压缩
+- ~~About 页面~~
+- ~~GZip 压缩~~
 - 站内搜索
 - 评论
+- 服务端渲染 markdown
 - RSS
 - 前端美化
 - 移动版
@@ -72,7 +74,7 @@ Django 后台部分：
 - 在 clone 出的目录旁建立一个 Python virtual env，名字自己定
 - 在 env 里安装 django, pytz, django-gravatar2
 - 把 depoly.sh 里 PYENV 变量里的 env-0v0.link 改成你的 env 名字
-- 把 deploy/apache.conf.template 和 zvz/setting.py 里的 0v0.link 改成你的域名
+- 把 deploy.sh、deploy/apache.conf.template 和 zvz/setting.py 里的 0v0.link 改成你的域名
 - 把 zvz/setting.py 里的 Arbutus 改成你服务器的 hostname
 - 按照你的个人信息编辑 blog/apps.py 里的 blog_settings 变量
 - 运行 deploy.sh，然后祈祷它别出错。

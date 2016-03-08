@@ -27,7 +27,7 @@
 
 .post h1 {
     font-weight: bold;
-    font-size: 24px;
+    font-size: 28px;
     padding-bottom: 10px;
     border-bottom: rgb(173, 173, 173) 1px dashed;
     margin: 0 0 10px;
@@ -36,16 +36,16 @@
 
 .post h2 {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 24px;
     padding-bottom: 10px;
     border-bottom: rgb(173, 173, 173) 1px dashed;
     margin: 0 0 10px;
 }
 
 #content p {
-    font-size: 14px;
-    margin-bottom: 14px;
-    line-height: 1.7;
+    font-size: 18px;
+    margin-bottom: 18px;
+    line-height: 1.5;
 }
 
 #content a {
@@ -95,7 +95,7 @@
 }
 
 #content li {
-    font-size: 14px;
+    font-size: 18px;
 }
 
 #post-meta {

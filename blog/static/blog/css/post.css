@@ -94,6 +94,10 @@
     list-style-type: armenian;
 }
 
+#content li {
+    font-size: 14px;
+}
+
 #post-meta {
     background-color: whitesmoke;
     box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25) inset;

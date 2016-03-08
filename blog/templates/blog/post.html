@@ -33,7 +33,7 @@
                     <span class="meta-info fa fa-file-text">Draft!</span>
                 {% endif %}
                 <div class="right">
-                    <span class="meta-info fa fa-eye"> 1</span>
+                    <span class="meta-info fa fa-eye"> {{ post.view_times }}</span>
                     <span class="meta-info fa fa-comment"> {{ post.comment_set.count }}</span>
                     <a href="{% url 'blog:share' post.slug %}" target="_blank"><span class="meta-info fa fa-share"> {{ post.share_times }}</span></a>
                 </div>

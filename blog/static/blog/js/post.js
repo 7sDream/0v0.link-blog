@@ -61,6 +61,11 @@ function md_to_html() {
     build_toc(content_div);
 }
 
-window.addEventListener('load', md_to_html);
+if (window.addEventListener) {
+    window.addEventListener('DOMContentLoaded', md_to_html, false)
+}
+else if (window.attachEvent) {
+    window.attachEvent('onload', md_to_html)
+}
 
 window.addEventListener('scroll', fixed_elem(document.querySelector('#toc-card')));

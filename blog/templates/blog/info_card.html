@@ -1,13 +1,13 @@
-{% load gravatar %}
+{% load staticfiles %}
 
 <div class="right-card">
     <div class="user-icon-wrapper">
-        <a><img src="{% gravatar_url "didislover@gmail.com" 96 %}" width="96px"
+        <a><img src="{% static blog_conf.owner_avatar %}" width="96px"
                 height="96px"></a>
-        <h2><a>7sDream</a></h2>
+        <h2><a>{{ blog_conf.owner_name }}</a></h2>
     </div>
     <div class="sign">
-        <p>Forward.forward...</p>
+        <p>{{ blog_conf.owner_sign }}</p>
     </div>
     <div class="self-info">
         <ul>

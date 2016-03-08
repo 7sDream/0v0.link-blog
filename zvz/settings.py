@@ -47,7 +47,6 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
-    'django_gravatar',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

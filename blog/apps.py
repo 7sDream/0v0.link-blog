@@ -9,6 +9,9 @@ class BlogConfig(AppConfig):
     blog_settings = {
         'name': '7sDream Blog',
         'description': '漆黑烈焰使、邪王真眼、中二病、黑历史、技术宅、萝莉控、老司机、etc',
+        'owner_name': '7sDream',
+        'owner_sign': 'Forward.forward...',
+        'owner_avatar': 'blog/image/dark_master.png',
         'post_per_page': 5,
         'self_infos': [
             {'name': 'Github', 'url': 'https://github.com/7sDream', 'icon': 'github'},

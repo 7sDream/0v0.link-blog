@@ -22,19 +22,17 @@
             <nav class="left-box">
                 <ul>
                     <li>
-                        <a href="{% url 'blog:index' %}">{{ blog_conf.name }}</a> {{ blog_conf.description }}
+                        <a href="{% url 'blog:index' %}">{{ blog_conf.name }}</a> - {{ blog_conf.description }}
                     </li>
                 </ul>
             </nav>
-            <nav class="right-box">
-                <ul>
-                    {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
+                <nav class="right-box">
+                    <ul>
                         <li>欢迎 <a href="#">{{ user.username }}</a></li>
-                    {% else %}
-                        <li><a href="#">登录</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
+                    </ul>
+                </nav>
+            {% endif %}
         </div>
     </div>
     <div id="top-image"></div>

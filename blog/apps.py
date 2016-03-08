@@ -8,7 +8,7 @@ class BlogConfig(AppConfig):
     # Blog settings
     blog_settings = {
         'name': '7sDream Blog',
-        'description': '一个用来写代码，泡妹子，吐槽以及思考的小空间',
+        'description': '漆黑烈焰使、邪王真眼、中二病、黑历史、技术宅、萝莉控、老司机、etc',
         'post_per_page': 5,
         'self_infos': [
             {'name': 'Github', 'url': 'https://github.com/7sDream', 'icon': 'github'},

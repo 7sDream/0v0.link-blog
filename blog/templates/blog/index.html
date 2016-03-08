@@ -99,6 +99,11 @@
             Array.prototype.slice.call(document.querySelectorAll('.summary')).forEach(md2html)
         }
 
-        window.addEventListener('load', all_md_to_html)
+        if (window.addEventListener) {
+            window.addEventListener('DOMContentLoaded', all_md_to_html, false)
+        }
+        else if (window.attachEvent) {
+            window.attachEvent('onload', all_md_to_html)
+        }
     </script>
 {% endblock %}

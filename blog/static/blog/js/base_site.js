@@ -20,17 +20,34 @@ function fixed_elem(elem){
     var origin_width = elem_style.width;
     var origin_top_offset = elem.offsetTop - parseInt(elem_style.marginTop, 10);
     return function(){
-        if (window.scrollY > origin_top_offset){
+        if (window.scrollY > origin_top_offset && elem.style.position !== 'fixed'){
             elem.style.position = 'fixed';
             elem.style.width = origin_width;
             elem.style.top = '0';
         }
-        else{
-            elem.style.position = 'static';
+        else if (window.scrollY <= origin_top_offset){
+            elem.style.position = '';
             elem.style.width = '';
             elem.style.top = ''
         }
     }
+}
+
+function scroll_to_top(speed){
+    if (scroll_to_top.s_timeout_id === undefined){
+        (function by_five(){
+            if(window.scrollY > 1){
+                window.scrollTo(0, window.scrollY * speed);
+                scroll_to_top.s_timeout_id = setTimeout(by_five, 10);
+            }
+            else {
+                window.scrollTo(0, 0);
+                clearTimeout(scroll_to_top.s_timeout_id);
+                scroll_to_top.s_timeout_id = undefined;
+            }
+        })();
+    }
+    return false;
 }
 
 function search_validator(form) {

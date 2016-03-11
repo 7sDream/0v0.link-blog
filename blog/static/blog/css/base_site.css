@@ -258,3 +258,14 @@ div.footer {
 #main {
     padding-bottom: 20px;
 }
+
+#to-top {
+    position: fixed;
+    right: 20px;
+    bottom: 5px;
+    font-size: 50px;
+}
+
+#to-top span {
+    color: gray;
+}

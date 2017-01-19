@@ -18,6 +18,6 @@ class BlogConfig(AppConfig):
             {'name': 'Zhihu', 'url': 'https://www.zhihu.com/people/7sdream', 'icon': 'question-circle'},
             {'name': 'Weibo', 'url': 'http://weibo.com/didilover', 'icon': 'weibo'},
             {'name': 'Ask.me', 'url': 'https://ask.fm/i7sdream', 'icon': 'at'},
-            {'name': 'Email', 'url': 'mailto:xixihaha.xiha@qq.com', 'icon': 'envelope'},
+            {'name': 'Email', 'url': 'mailto:7seconddream@gmail.com', 'icon': 'envelope'},
         ],
     }

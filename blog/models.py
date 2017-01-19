@@ -73,7 +73,7 @@ class Comment(models.Model):
     parent = models.ForeignKey('self', on_delete=models.CASCADE,
                                related_name='children',
                                null=True, default=None, blank=True)
-    time = models.DateTimeField(default='django.utils.timezone.now()')
+    time = models.DateTimeField(default=timezone.now)
     user = models.ForeignKey(Author, on_delete=models.SET_NULL,
                              null=True, default=None, blank=True)
     floor = models.IntegerField(default=0)

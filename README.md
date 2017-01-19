@@ -19,7 +19,7 @@
 - 通过目录/Tag过滤文章
 - 文章 TOC （客户端 JS 动态生成）
 - 使用 markdown.js 渲染 md
-- 文章图片标题（客户端 JS 动态生成，提取alt属性）
+- 文章图片标题（客户端 JS 动态生成，提取 alt 属性）
 - Icon
 - 关于页面
 - Form 本地验证
@@ -69,7 +69,7 @@ Django 后台部分：
 
 ## 部署？你确定？
 
-**这不是个reuseable app！**，但是确实是有一些快速部署支持的，deploy.sh 和 deploy 文件夹就是干这个用的。
+**这不是个 reuseable app！**，但是确实是有一些快速部署支持的，deploy.sh 和 deploy 文件夹就是干这个用的。
 
 如果你想部署在自己的服务器上的话，基本上要以下，额……好多步：
 
@@ -79,9 +79,10 @@ Django 后台部分：
 - clone 你的 repo
 - 在 clone 出的目录旁建立一个 Python virtual env，名字自己定
 - 在 env 里安装 django, pytz, django-gravatar2
-- 把 depoly.sh 里 PYENV 变量里的 env-0v0.link 改成你的 env 名字
+- 把 deploy.sh 里 PYENV 变量里的 env-0v0.link 改成你的 env 名字
 - 把 deploy.sh、deploy/apache.conf.template 和 zvz/setting.py 里的 0v0.link 改成你的域名
-- 把 zvz/setting.py 里的 Arbutus 改成你服务器的 hostname
+- 把 zvz/setting.py 里的 Arbutus 改成你服务器的 hostname, STATIC_URL 改成你的 CDN 地址
+- 用 `python manage.py collectstatic` 收集静态文件，然后传到你的 CDN 上去
 - 按照你的个人信息编辑 blog/apps.py 里的 blog_settings 变量
 - 运行 deploy.sh，然后祈祷它别出错。
 - 访问你的域名(eg. example.com)，看看是不是正常

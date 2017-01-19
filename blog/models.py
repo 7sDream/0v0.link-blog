@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.forms.widgets import PasswordInput
+from django.utils import timezone
+
 
 TAG_MAX_LENGTH = 20
 CATEGORY_MAX_LENGTH = 40
@@ -68,10 +69,14 @@ class Comment(models.Model):
     nickname = models.CharField(max_length=NICKNAME_MAX_LENGTH)
     email = models.EmailField()
     content = models.TextField()
-    post = models.ForeignKey(Post, on_delete=models.CASCADE,
-                             default=None, null=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     parent = models.ForeignKey('self', on_delete=models.CASCADE,
-                               related_name='children')
+                               related_name='children',
+                               null=True, default=None, blank=True)
+    time = models.DateTimeField(default='django.utils.timezone.now()')
+    user = models.ForeignKey(Author, on_delete=models.SET_NULL,
+                             null=True, default=None, blank=True)
+    floor = models.IntegerField(default=0)
 
     def __str__(self):
         return '{self.nickname}: {self.content}'.format(self=self)

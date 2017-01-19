@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.db.models import Q, F
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .models import Post, Tag, Category
+from .models import Post, Tag, Category, Comment
 from .apps import BlogConfig
 from .forms import SearchFrom
 
